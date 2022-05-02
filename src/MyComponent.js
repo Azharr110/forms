@@ -1,5 +1,7 @@
 import DataTable from "react-data-table-component";
 import "./App.css";
+import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
+
 const columns = [
   {
     name: "Id",
@@ -36,6 +38,29 @@ const columns = [
     selector: (row) => row.isCool.toString(),
   },
   { name: "Followers", selector: (row) => row.instaFollower },
+
+  {
+    name: "Actions",
+    selector: (row) => row.actions,
+    cell: () => {
+      return (
+        <>
+          <EditOutlined className="edit" />{" "}
+          <DeleteOutlined
+            onClick={
+              <a
+                href="delete_methode_link"
+                onclick="return confirm('Are you sure you want to Remove?');"
+              >
+                Remove
+              </a>
+            }
+            className="delete"
+          />
+        </>
+      );
+    },
+  },
 ];
 export function MyComponent({ list, setList, loading }) {
   if (loading) {

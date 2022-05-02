@@ -93,3 +93,13 @@ a:hover {
 .submit {
   margin: 0 auto;
 }
+
+.edit{
+
+  padding: 1px;
+}
+
+.delete{
+
+  padding: 15px;
+}

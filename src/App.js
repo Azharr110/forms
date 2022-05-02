@@ -2,6 +2,7 @@ import { MyComponent } from "./MyComponent";
 import { useState } from "react";
 
 import "./App.css";
+import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
 
 let myId = localStorage.getItem("id")
   ? JSON.parse(localStorage.getItem("id"))
@@ -25,6 +26,7 @@ export default function App() {
   const [isSearching, setSearch] = useState("");
   const [insta, setInsta] = useState("");
   const [loading, isLoading] = useState(false);
+  //const [actions, setActions] = useState("");
 
   function submitHandler(e) {
     e.preventDefault();
@@ -46,6 +48,7 @@ export default function App() {
           isCool: isCool,
           insta: insta,
           instaFollower: data,
+          //actions: actions,
         });
       })
       .then(() => {
