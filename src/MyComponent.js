@@ -1,8 +1,9 @@
+import React, { useState } from "react";
 import DataTable from "react-data-table-component";
 import "./App.css";
 import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
 
-const columns = [
+const columns = (removeItem) => [
   {
     name: "Id",
     selector: (row) => row.id,
@@ -42,44 +43,45 @@ const columns = [
   {
     name: "Actions",
     selector: (row) => row.actions,
-    cell: () => {
+    cell: (row) => {
+      // const MyComponent = { id };
       return (
-        <>
-          <EditOutlined className="edit" />{" "}
-          <DeleteOutlined
-            onClick={
-              <a
-                href="delete_methode_link"
-                onclick="return confirm('Are you sure you want to Remove?');"
-              >
-                Remove
-              </a>
-            }
-            className="delete"
-          />
-        </>
+        <div className="btn-container">
+          <button type="button" className="edit-btn">
+            <EditOutlined />
+          </button>
+          <button
+            type="button"
+            className="delete-btn"
+            onClick={(e) => removeItem(row.id)}
+          >
+            <DeleteOutlined />
+          </button>
+        </div>
       );
     },
   },
 ];
-export function MyComponent({ list, setList, loading }) {
+export function MyComponent({ removeItem, list, setList, loading }) {
+  console.log(removeItem);
   if (loading) {
     return <h1 className="loading">LOADING...</h1>;
   } else {
     return (
       <>
         <DataTable
-          className="table"
-          columns={columns}
-          onRowClicked={(row) => {
-            let isDel = window.confirm("Are you sure you want to delete!!");
-            if (isDel) {
-              let arr = list.filter((item) => item.id !== row.id);
-              setList(arr);
+          className="trash"
+          columns={columns(removeItem)}
+          // removeItem={removeItem}
+          // onClicked={(row) => {
+          //  let isDel = window.confirm("Are you sure you want to delete!!");
+          //  if (isDel) {
+          //   let arr = list.filter((item) => item.id !== row.id);
+          //   setList(arr);
 
-              localStorage.setItem("list", JSON.stringify(arr));
-            }
-          }}
+          //   localStorage.setItem("list", JSON.stringify(arr));
+          // }
+          // }}
           data={list}
         />
       </>

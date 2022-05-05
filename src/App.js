@@ -26,7 +26,33 @@ export default function App() {
   const [isSearching, setSearch] = useState("");
   const [insta, setInsta] = useState("");
   const [loading, isLoading] = useState(false);
-  //const [actions, setActions] = useState("");
+  //   const [isEditing, setIsEditing] = useState(false);
+  //   const [editID, setEditID] = useState(null);
+  //   const [alert, setAlert] = useState({ show: false, msg: "", type: "" });
+  //   return <section className="section-center">
+  // <div className="Actions">
+
+  // </div>
+
+  //   </section>
+
+  // const showAlert = (show = false, type = "", msg = "") => {
+  //   setAlert({ show, type, msg });
+  // };
+  // const clearList = () => {
+  //   showAlert(true, "danger", "empty list");
+  //   setList([]);
+  // };
+  const removeItem = (id) => {
+    //   showAlert(true, "danger", "item removed");
+    let isDel = window.confirm("Are you sure you want to delete!!");
+    if (isDel) {
+      let arr = list.filter((item) => item.id !== id);
+      setList(arr);
+
+      localStorage.setItem("list", JSON.stringify(arr));
+    }
+  };
 
   function submitHandler(e) {
     e.preventDefault();
@@ -180,8 +206,17 @@ export default function App() {
             Submit
           </button>
         </form>
+        {/* {MyComponent.map((curMycomponent)) => { 
+          return <MyComponent key={curMycomponent.id} { ...curMycomponent} 
+        }
+        } */}
       </div>
-      <MyComponent list={list} setList={setList} loading={loading} />
+      <MyComponent
+        removeItem={removeItem}
+        list={list}
+        setList={setList}
+        loading={loading}
+      />
     </>
   );
 }
