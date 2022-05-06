@@ -1,7 +1,7 @@
 import React from "react";
 import DataTable from "react-data-table-component";
 import "./App.css";
-import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
+import { EditOutlined, DeleteOutlined, AlertFilled } from "@ant-design/icons";
 
 const columns = (removeItem, editItem) => [
   {

@@ -3,6 +3,8 @@ body {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  margin: 0;
+  padding: 0;
 }
 .table {
   background-color: brown;
@@ -78,7 +80,7 @@ a:hover {
   background: rgb(17, 16, 17);
   color: white;
   font-size: 40px;
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   z-index: 9999;
