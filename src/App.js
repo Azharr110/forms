@@ -2,7 +2,11 @@ import { MyComponent } from "./MyComponent";
 import { useState } from "react";
 
 import "./App.css";
-import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
+import {
+  EditOutlined,
+  DeleteOutlined,
+  WindowsOutlined,
+} from "@ant-design/icons";
 
 let myId = localStorage.getItem("id")
   ? JSON.parse(localStorage.getItem("id"))
@@ -26,8 +30,8 @@ export default function App() {
   const [isSearching, setSearch] = useState("");
   const [insta, setInsta] = useState("");
   const [loading, isLoading] = useState(false);
-  //   const [isEditing, setIsEditing] = useState(false);
-  //   const [editID, setEditID] = useState(null);
+  // const [isEditing, setIsEditing] = useState(false);
+  // const [editID, setEditID] = useState(null);
   //   const [alert, setAlert] = useState({ show: false, msg: "", type: "" });
   //   return <section className="section-center">
   // <div className="Actions">
@@ -52,6 +56,25 @@ export default function App() {
 
       localStorage.setItem("list", JSON.stringify(arr));
     }
+
+    // const editItem = (id) => {
+    //   let newEditItem = items.find(()) => {
+    //     return elem.id === id
+    //   });
+    //   console.log(newEditItem);
+
+    //   setIsEditing(id);
+    // }
+
+    // const editItem = (id) => {
+    //   let isEditing = window;
+    //   if (isEditing) {
+    //     let arr = list.filter((item) => item.id !== id);
+    //     setList(arr);
+
+    //     localStorage.setItem("list", JSON.stringify(arr));
+    //   }
+    // };
   };
 
   function submitHandler(e) {
@@ -213,6 +236,7 @@ export default function App() {
       </div>
       <MyComponent
         removeItem={removeItem}
+        // editItem={editItem}
         list={list}
         setList={setList}
         loading={loading}

@@ -3,7 +3,7 @@ import DataTable from "react-data-table-component";
 import "./App.css";
 import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
 
-const columns = (removeItem) => [
+const columns = (removeItem, editItem) => [
   {
     name: "Id",
     selector: (row) => row.id,
@@ -16,7 +16,11 @@ const columns = (removeItem) => [
     name: "Insta handle",
     selector: (row) => {
       return (
-        <a href={`https://www.instagram.com/${row.insta}`} target="_blank">
+        <a
+          href={`https://www.instagram.com/${row.insta}`}
+          target="_blank"
+          // rel="noreferrer"
+        >
           {row.insta}
         </a>
       );
@@ -36,7 +40,7 @@ const columns = (removeItem) => [
   },
   {
     name: "isCool",
-    selector: (row) => row.isCool.toString(),
+    selector: (row) => row.isCool?.toString(),
   },
   { name: "Followers", selector: (row) => row.instaFollower },
 
@@ -47,7 +51,11 @@ const columns = (removeItem) => [
       // const MyComponent = { id };
       return (
         <div className="btn-container">
-          <button type="button" className="edit-btn">
+          <button
+            type="button"
+            className="edit-btn"
+            // onClick={(e) => editItem(row.id)}
+          >
             <EditOutlined />
           </button>
           <button
@@ -62,8 +70,7 @@ const columns = (removeItem) => [
     },
   },
 ];
-export function MyComponent({ removeItem, list, setList, loading }) {
-  console.log(removeItem);
+export function MyComponent({ editItem, removeItem, list, setList, loading }) {
   if (loading) {
     return <h1 className="loading">LOADING...</h1>;
   } else {
@@ -71,7 +78,7 @@ export function MyComponent({ removeItem, list, setList, loading }) {
       <>
         <DataTable
           className="trash"
-          columns={columns(removeItem)}
+          columns={columns(removeItem, editItem)}
           // removeItem={removeItem}
           // onClicked={(row) => {
           //  let isDel = window.confirm("Are you sure you want to delete!!");
@@ -84,6 +91,7 @@ export function MyComponent({ removeItem, list, setList, loading }) {
           // }}
           data={list}
         />
+        {/* <DataTable className="edit" columns={columns(editItem)} data={list} /> */}
       </>
     );
   }
