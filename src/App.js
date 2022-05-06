@@ -2,11 +2,10 @@ import { MyComponent } from "./MyComponent";
 import { useState } from "react";
 
 import "./App.css";
-import {
-  EditOutlined,
-  DeleteOutlined,
-  WindowsOutlined,
-} from "@ant-design/icons";
+// import // EditOutlined,
+// // DeleteOutlined,
+// // WindowsOutlined,
+// "@ant-design/icons";
 
 let myId = localStorage.getItem("id")
   ? JSON.parse(localStorage.getItem("id"))

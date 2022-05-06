@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import DataTable from "react-data-table-component";
 import "./App.css";
 import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
@@ -19,7 +19,7 @@ const columns = (removeItem, editItem) => [
         <a
           href={`https://www.instagram.com/${row.insta}`}
           target="_blank"
-          // rel="noreferrer"
+          rel="noreferrer"
         >
           {row.insta}
         </a>
